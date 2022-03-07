@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
 
 
 import os
@@ -181,7 +177,6 @@ a = iter(test_dl)
 b = next(a)
 print(b[1])
 print(b[0].shape)
-plt.imshow(b[0][0][0])
 
 
 # In[17]:
@@ -449,7 +444,7 @@ history = train_model(model, criterion, optimizer, num_epochs=config['EPOCHS'])
 
 # In[ ]:
 
-
+plt.clf()
 plt.plot(range(config['EPOCHS']),history['accuracy'],label = 'Train Accuracy')
 plt.plot(range(config['EPOCHS']),history['val_accuracy'],label = 'Validation Accuracy')
 plt.legend()
