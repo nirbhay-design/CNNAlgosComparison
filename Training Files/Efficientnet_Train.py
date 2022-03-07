@@ -35,13 +35,6 @@ from torch.nn import functional as F
 from torch.utils import model_zoo
 
 
-# In[3]:
-
-
-get_ipython().system('nvidia-htop.py')
-
-
-# In[4]:
 
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
@@ -64,7 +57,7 @@ config = dict(
     IMAGE_HEIGHT= 512,
     IMAGE_WIDTH = 770,
     lr=0.001, 
-    EPOCHS = 2,
+    EPOCHS = 28,
     device=device,
     SEED = 42,
     pin_memory=True,
