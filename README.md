@@ -1,6 +1,6 @@
 # CNNAlgosComparison
 
-## Models For Comparison
+## Models For Comparison (All the models are written from scratch using pytorch)
 
 1. Efficientnet
 2. Googlenet
