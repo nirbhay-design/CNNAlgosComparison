@@ -320,7 +320,7 @@ def evaluate(model,loader,return_logs=False):
           # model = model.to(device)
 
           scores = model(x)
-          predict_prob = F.softmax(scores)
+          predict_prob = F.softmax(scores,dim=1)
           _,predictions = predict_prob.max(1)
 
           predictions = predictions.to('cpu')

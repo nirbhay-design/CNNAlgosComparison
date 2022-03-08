@@ -18,3 +18,9 @@
 - Mayank Raj (B19CSE053)
 - Gautam Kumar (B19EE031)
 - Nirbay Sharma (B19CSE114)
+
+Results:
+
+- **googlenet**
+
+![img1](roc_loss_plots/roc-googlenet.svg)
