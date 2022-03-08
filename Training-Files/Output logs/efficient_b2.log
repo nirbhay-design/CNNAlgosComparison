@@ -1,0 +1,775 @@
+/usr/lib/python3/dist-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.7) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+cuda
+240 80
+tensor([1, 1, 0, 1, 1, 1, 1, 1])
+torch.Size([8, 3, 384, 578])
+EfficientNet(
+  (pool): AdaptiveAvgPool2d(output_size=1)
+  (features): Sequential(
+    (0): CNNBlock(
+      (cnn): Conv2d(3, 35, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn): BatchNorm2d(35, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (silu): SiLU()
+    )
+    (1): InvertedResidualBlock(
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(35, 35, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=35, bias=False)
+          (bn): BatchNorm2d(35, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(35, 8, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(8, 35, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(35, 20, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(20, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (2): InvertedResidualBlock(
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(20, 20, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=20, bias=False)
+          (bn): BatchNorm2d(20, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(20, 5, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(5, 20, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(20, 20, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(20, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (3): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(20, 120, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(120, 120, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=120, bias=False)
+          (bn): BatchNorm2d(120, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(120, 5, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(5, 120, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(120, 28, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (4): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(28, 168, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(168, 168, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=168, bias=False)
+          (bn): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(168, 7, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(7, 168, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(168, 28, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(28, 168, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(168, 168, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=168, bias=False)
+          (bn): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(168, 7, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(7, 168, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(168, 28, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(28, 168, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(168, 168, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=168, bias=False)
+          (bn): BatchNorm2d(168, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(168, 7, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(7, 168, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(168, 44, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(44, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (7): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(44, 264, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(264, 264, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=264, bias=False)
+          (bn): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(264, 11, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(11, 264, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(264, 44, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(44, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (8): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(44, 264, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(264, 264, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=264, bias=False)
+          (bn): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(264, 11, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(11, 264, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(264, 44, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(44, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (9): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(44, 264, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(264, 264, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=264, bias=False)
+          (bn): BatchNorm2d(264, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(264, 11, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(11, 264, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(264, 88, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(88, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (10): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(88, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(528, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=528, bias=False)
+          (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(528, 22, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(22, 528, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(528, 88, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(88, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (11): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(88, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(528, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=528, bias=False)
+          (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(528, 22, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(22, 528, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(528, 88, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(88, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (12): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(88, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(528, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=528, bias=False)
+          (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(528, 22, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(22, 528, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(528, 88, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(88, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (13): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(88, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(528, 528, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=528, bias=False)
+          (bn): BatchNorm2d(528, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(528, 22, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(22, 528, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(528, 124, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(124, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (14): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(124, 744, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(744, 744, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=744, bias=False)
+          (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(744, 31, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(31, 744, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(744, 124, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(124, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (15): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(124, 744, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(744, 744, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=744, bias=False)
+          (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(744, 31, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(31, 744, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(744, 124, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(124, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (16): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(124, 744, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(744, 744, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=744, bias=False)
+          (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(744, 31, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(31, 744, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(744, 124, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(124, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (17): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(124, 744, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(744, 744, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=744, bias=False)
+          (bn): BatchNorm2d(744, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(744, 31, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(31, 744, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(744, 212, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(212, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (18): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(212, 1272, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(1272, 1272, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1272, bias=False)
+          (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(1272, 53, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(53, 1272, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(1272, 212, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(212, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (19): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(212, 1272, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(1272, 1272, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1272, bias=False)
+          (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(1272, 53, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(53, 1272, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(1272, 212, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(212, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (20): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(212, 1272, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(1272, 1272, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1272, bias=False)
+          (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(1272, 53, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(53, 1272, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(1272, 212, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(212, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (21): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(212, 1272, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(1272, 1272, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1272, bias=False)
+          (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(1272, 53, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(53, 1272, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(1272, 212, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(212, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (22): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(212, 1272, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(1272, 1272, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1272, bias=False)
+          (bn): BatchNorm2d(1272, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(1272, 53, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(53, 1272, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(1272, 352, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(352, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (23): InvertedResidualBlock(
+      (expand_conv): CNNBlock(
+        (cnn): Conv2d(352, 2112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(2112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (silu): SiLU()
+      )
+      (conv): Sequential(
+        (0): CNNBlock(
+          (cnn): Conv2d(2112, 2112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=2112, bias=False)
+          (bn): BatchNorm2d(2112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (silu): SiLU()
+        )
+        (1): SqueezeExcitation(
+          (se): Sequential(
+            (0): AdaptiveAvgPool2d(output_size=1)
+            (1): Conv2d(2112, 88, kernel_size=(1, 1), stride=(1, 1))
+            (2): SiLU()
+            (3): Conv2d(88, 2112, kernel_size=(1, 1), stride=(1, 1))
+            (4): Sigmoid()
+          )
+        )
+        (2): Conv2d(2112, 352, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (3): BatchNorm2d(352, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (24): CNNBlock(
+      (cnn): Conv2d(352, 1408, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (bn): BatchNorm2d(1408, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (silu): SiLU()
+    )
+  )
+  (classifier): Sequential(
+    (0): Dropout(p=0.3, inplace=False)
+    (1): Linear(in_features=1408, out_features=2, bias=True)
+  )
+)
+Epoch 0/34
+----------
+Train Accuracy tensor(0.7740, dtype=torch.float64)
+Validation Loss is 0.5243663210421801
+Validation Accuracy is 0.790625
+One of the best validation accuracy found.
+
+Epoch 1/34
+----------
+Train Accuracy tensor(0.7859, dtype=torch.float64)
+Validation Loss is 0.5358878079801798
+Validation Accuracy is 0.790625
+Epoch 2/34
+----------
+Train Accuracy tensor(0.7875, dtype=torch.float64)
+Validation Loss is 0.526324999704957
+Validation Accuracy is 0.790625
+Epoch 3/34
+----------
+Train Accuracy tensor(0.7906, dtype=torch.float64)
+Validation Loss is 0.5073102230206132
+Validation Accuracy is 0.790625
+Epoch 4/34
+----------
+Train Accuracy tensor(0.7885, dtype=torch.float64)
+Validation Loss is 0.5142763214185834
+Validation Accuracy is 0.790625
+Epoch 5/34
+----------
+Train Accuracy tensor(0.7859, dtype=torch.float64)
+Validation Loss is 0.5182997275143861
+Validation Accuracy is 0.790625
+Epoch 6/34
+----------
+Train Accuracy tensor(0.7911, dtype=torch.float64)
+Validation Loss is 0.49456515461206435
+Validation Accuracy is 0.790625
+Epoch 7/34
+----------
+Train Accuracy tensor(0.7911, dtype=torch.float64)
+Validation Loss is 0.4924713671207428
+Validation Accuracy is 0.790625
+Epoch 8/34
+----------
+Train Accuracy tensor(0.7911, dtype=torch.float64)
+Validation Loss is 0.5118986582383513
+Validation Accuracy is 0.790625
+Epoch 9/34
+----------
+Train Accuracy tensor(0.7896, dtype=torch.float64)
+Validation Loss is 0.4635200772434473
+Validation Accuracy is 0.790625
+Epoch 10/34
+----------
+Train Accuracy tensor(0.7906, dtype=torch.float64)
+Validation Loss is 0.46313893888145685
+Validation Accuracy is 0.790625
+Epoch 11/34
+----------
+Train Accuracy tensor(0.7911, dtype=torch.float64)
+Validation Loss is 0.4499806226231158
+Validation Accuracy is 0.790625
+Epoch 12/34
+----------
+Train Accuracy tensor(0.7901, dtype=torch.float64)
+Validation Loss is 0.4576365722343326
+Validation Accuracy is 0.790625
+Epoch 13/34
+----------
+Train Accuracy tensor(0.7870, dtype=torch.float64)
+Validation Loss is 0.493096749484539
+Validation Accuracy is 0.790625
+Epoch 14/34
+----------
+Train Accuracy tensor(0.7896, dtype=torch.float64)
+Validation Loss is 0.42442098297178743
+Validation Accuracy is 0.790625
+Epoch 15/34
+----------
+Train Accuracy tensor(0.7849, dtype=torch.float64)
+Validation Loss is 0.45348900482058524
+Validation Accuracy is 0.790625
+Epoch 16/34
+----------
+Train Accuracy tensor(0.7854, dtype=torch.float64)
+Validation Loss is 0.42693414054811
+Validation Accuracy is 0.790625
+Epoch 17/34
+----------
+Train Accuracy tensor(0.7865, dtype=torch.float64)
+Validation Loss is 0.44813479073345663
+Validation Accuracy is 0.790625
+Epoch 18/34
+----------
+Train Accuracy tensor(0.7875, dtype=torch.float64)
+Validation Loss is 0.46020338498055935
+Validation Accuracy is 0.728125
+Epoch 19/34
+----------
+Train Accuracy tensor(0.7896, dtype=torch.float64)
+Validation Loss is 0.4223965613171458
+Validation Accuracy is 0.790625
+Epoch 20/34
+----------
+Train Accuracy tensor(0.7854, dtype=torch.float64)
+Validation Loss is 0.45650626346468925
+Validation Accuracy is 0.790625
+Epoch 21/34
+----------
+Train Accuracy tensor(0.7875, dtype=torch.float64)
+Validation Loss is 0.41372991260141134
+Validation Accuracy is 0.8078125
+One of the best validation accuracy found.
+
+Epoch 22/34
+----------
+Train Accuracy tensor(0.7953, dtype=torch.float64)
+Validation Loss is 0.5349270951002836
+Validation Accuracy is 0.6765625000000001
+Epoch 23/34
+----------
+Train Accuracy tensor(0.7911, dtype=torch.float64)
+Validation Loss is 0.4474883180111647
+Validation Accuracy is 0.7562500000000001
+Epoch 24/34
+----------
+Train Accuracy tensor(0.7844, dtype=torch.float64)
+Validation Loss is 0.44058738052845003
+Validation Accuracy is 0.7937500000000001
+Epoch 25/34
+----------
+Train Accuracy tensor(0.7948, dtype=torch.float64)
+Validation Loss is 0.4766498040407896
+Validation Accuracy is 0.7296875
+Epoch 26/34
+----------
+Train Accuracy tensor(0.8005, dtype=torch.float64)
+Validation Loss is 0.4104668257758021
+Validation Accuracy is 0.8203125
+One of the best validation accuracy found.
+
+Epoch 27/34
+----------
+Train Accuracy tensor(0.8021, dtype=torch.float64)
+Validation Loss is 0.4263392258435488
+Validation Accuracy is 0.7734375
+Epoch 28/34
+----------
+Train Accuracy tensor(0.8109, dtype=torch.float64)
+Validation Loss is 0.4268168771639466
+Validation Accuracy is 0.78125
+Epoch 29/34
+----------
+Train Accuracy tensor(0.8083, dtype=torch.float64)
+Validation Loss is 0.41496958341449497
+Validation Accuracy is 0.8078125
+Epoch 30/34
+----------
+Train Accuracy tensor(0.8141, dtype=torch.float64)
+Validation Loss is 0.41717540808022024
+Validation Accuracy is 0.7921875
+Epoch 31/34
+----------
+Train Accuracy tensor(0.8156, dtype=torch.float64)
+Validation Loss is 0.36864159237593414
+Validation Accuracy is 0.8265625000000001
+One of the best validation accuracy found.
+
+Epoch 32/34
+----------
+Train Accuracy tensor(0.8182, dtype=torch.float64)
+Validation Loss is 0.383835187740624
+Validation Accuracy is 0.8078125
+Epoch 33/34
+----------
+Train Accuracy tensor(0.8240, dtype=torch.float64)
+Validation Loss is 0.37413838868960736
+Validation Accuracy is 0.821875
+Epoch 34/34
+----------
+Train Accuracy tensor(0.8323, dtype=torch.float64)
+Validation Loss is 0.3669918171130121
+Validation Accuracy is 0.83125
+One of the best validation accuracy found.
+
