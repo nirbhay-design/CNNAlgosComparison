@@ -34,7 +34,10 @@ config = dict(
     gpu_id="5",
     SEED=42,
     return_logs=False,
-    saved_path = '../saved-models/googlenet_v1.pth'
+    saved_path = '../saved-models/googlenet_v1.pth',
+    loss_acc_path = '../roc_loss_plots/loss-acc-googlenet.svg',
+    roc_path = '../roc_loss_plots/roc-googlenet.svg',
+    fta_path = '../pickle-files-roc/fta_google.pkl'
 )
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
@@ -347,7 +350,7 @@ def evaluate(model,loader,return_logs=False):
   aucc = auc(fpr,tpr)
   fpr_tpr_auc[1] = [fpr,tpr,aucc]
   model.train()
-  with open('../pickle-files-roc/fta_google.pkl','wb') as f:
+  with open(config['fta_path'],'wb') as f:
         pickle.dump(fpr_tpr_auc,f)
   return fpr_tpr_auc,lab,predicted_labels,pre_prob
 
@@ -361,7 +364,7 @@ def loss_acc_curve(tval):
     plt.ylabel('loss/accuracy')
     plt.title('loss_accuracy')
     plt.legend()
-    plt.savefig('../roc_loss_plots/loss-acc-googlenet.svg',format='svg')
+    plt.savefig(config['loss_acc_path'],format='svg')
 
 def roc_plot(fta):
     fpr,tpr,aucc = fta[1]
@@ -371,7 +374,7 @@ def roc_plot(fta):
     plt.ylabel('tpr')
     plt.title('roc_googlenet')
     plt.legend()
-    plt.savefig('../roc_loss_plots/roc-googlenet.svg',format='svg')
+    plt.savefig(config['roc_path'],format='svg')
     
 
 #---------------------------------------------train and test---------------------------------------------------------
