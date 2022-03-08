@@ -156,7 +156,7 @@ class InvertedResidual(nn.Module):
     channels_per_group = channels//groups
     x = x.reshape(batch_size,groups,channels_per_group,height,width)
     x = x.transpose(1,2)
-    x = x.reshape(batch_size,-1,width,width)
+    x = x.reshape(batch_size,-1,height,width)
     assert x.shape == original_shape, "shape of tensor changes"
     return x
 

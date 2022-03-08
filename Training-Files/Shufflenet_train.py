@@ -33,7 +33,7 @@ config = dict(
     num_workers=4,
     gpu_id="7",
     SEED=42,
-    return_logs=True,
+    return_logs=False,
     saved_path = '../saved-models/shufflenet_v1.pth',
     loss_acc_path = '../roc_loss_plots/loss-acc-shufflenet.svg',
     roc_path = '../roc_loss_plots/roc-shufflenet.svg',
@@ -185,7 +185,7 @@ class InvertedResidual(nn.Module):
     channels_per_group = channels//groups
     x = x.reshape(batch_size,groups,channels_per_group,height,width)
     x = x.transpose(1,2)
-    x = x.reshape(batch_size,-1,width,width)
+    x = x.reshape(batch_size,-1,height,width)
     assert x.shape == original_shape, "shape of tensor changes"
     return x
 
