@@ -31,19 +31,20 @@ config = dict(
     lr=0.001,
     EPOCHS=30,
     pin_memory=True,
-    num_workers=4,
-    gpu_id="7",
+    num_workers=2,
+    gpu_id="4",
     SEED=42,
+    aux=False,
     return_logs=False,
-    saved_path = '../saved-models/shufflenet_v1.pth',
-    loss_acc_path = '../roc_loss_plots/loss-acc-shufflenet.svg',
-    roc_path = '../roc_loss_plots/roc-shufflenet.svg',
-    fta_path = '../pickle-files-roc/fta_shuffle.pkl'
+    saved_path = '../saved-models/inception_v3_v1.pth',
+    loss_acc_path = '../roc_loss_plots/loss-acc-inceptionnet.svg',
+    roc_path = '../roc_loss_plots/roc-inceptionnet.svg',
+    fta_path = '../pickle-files-roc/fta_inception.pkl'
 )
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
-os.environ["CUDA_VISIBLE_DEVICES"]=config['gpu_id']
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# os.environ["CUDA_VISIBLE_DEVICES"]=config['gpu_id']
+device = torch.device(f"cuda:{config['gpu_id']}" if torch.cuda.is_available() else "cpu")
 print('gpu_id: ',config['gpu_id'])
 print(device)
 
@@ -155,8 +156,13 @@ def train(model,lossfunction,optimizer,n_epochs=200,return_logs=False):
           data = data.to(device)
           target = target.to(device)
 
-          scores = model(data)    
-          loss = lossfunction(scores,target)
+          scores,aux = model(data)
+          loss1 = 0
+          if config['aux']:
+            loss1 = lossfunction(scores,aux)
+          
+          loss2 = lossfunction(scores,target)
+          loss = loss2 + loss1
           cur_loss += loss.item() / (len_train)
           scores = F.softmax(scores,dim = 1)
           _,predicted = torch.max(scores,dim = 1)
@@ -183,7 +189,7 @@ def train(model,lossfunction,optimizer,n_epochs=200,return_logs=False):
         
           correct = 0;samples=0
           with torch.no_grad():
-              scores = model(data)
+              scores,aux = model(data)
               loss = lossfunction(scores,target)
               scores =F.softmax(scores,dim=1)
               _,predicted = torch.max(scores,dim = 1)
@@ -234,7 +240,7 @@ def evaluate(model,loader,return_logs=False):
           y = y.to(device)
           # model = model.to(device)
 
-          scores = model(x)
+          scores,_ = model(x)
           predict_prob = F.softmax(scores,dim=1)
           _,predictions = predict_prob.max(1)
 
@@ -284,14 +290,14 @@ def roc_plot(fta):
     plt.plot(fpr,tpr,label=f'auc: {aucc:.3f}')
     plt.xlabel('fpr')
     plt.ylabel('tpr')
-    plt.title('roc_googlenet')
+    plt.title('roc_inceptionnet')
     plt.legend()
     plt.savefig(config['roc_path'],format='svg')
     
 
 #---------------------------------------------train and test---------------------------------------------------------
 
-CNN_arch = inception_v3(aux=False)
+CNN_arch = inception_v3(aux=config['aux'])
 
 CNN_arch = CNN_arch.to(device)
 
