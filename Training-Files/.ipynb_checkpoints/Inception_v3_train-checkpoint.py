@@ -32,15 +32,28 @@ config = dict(
     EPOCHS=30,
     pin_memory=True,
     num_workers=2,
+    discount=0.3,
     gpu_id="4",
     SEED=42,
-    aux=False,
+    aux=True,
     return_logs=False,
     saved_path = '../saved-models/inception_v3_v1.pth',
     loss_acc_path = '../roc_loss_plots/loss-acc-inceptionnet.svg',
     roc_path = '../roc_loss_plots/roc-inceptionnet.svg',
     fta_path = '../pickle-files-roc/fta_inception.pkl'
 )
+
+aux_fun = lambda x: "_aux" if x else ""
+str_value = aux_fun(config['aux'])
+config['saved_path'] = config['saved_path'][:-4] + str_value  + config['saved_path'][-4:]
+config['loss_acc_path'] = config['loss_acc_path'][:-4] + str_value + config['loss_acc_path'][-4:]
+config['roc_path'] = config['roc_path'][:-4] + str_value + config['roc_path'][-4:]
+config['fta_path'] = config['fta_path'][:-4] + str_value + config['fta_path'][-4:]
+
+print(config['saved_path'])
+print(config['loss_acc_path'])
+print(config['roc_path'])
+print(config['fta_path'])
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
 # os.environ["CUDA_VISIBLE_DEVICES"]=config['gpu_id']
@@ -143,7 +156,7 @@ print(int(len(val_loader)*config['BATCH_SIZE']))
 #-----------------------------------------------necessary functions for inferencing and training---------------------------------
 transformations = torchvision.transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 
-def train(model,lossfunction,optimizer,n_epochs=200,return_logs=False):
+def train(model,lossfunction1,lossfunction2,optimizer,n_epochs=200,return_logs=False):
   tval = {'valloss':[],'valacc':[],'trainacc':[],"trainloss":[]}
   starttime = time.time()
   for epochs in range(n_epochs):
@@ -159,10 +172,10 @@ def train(model,lossfunction,optimizer,n_epochs=200,return_logs=False):
           scores,aux = model(data)
           loss1 = 0
           if config['aux']:
-            loss1 = lossfunction(scores,aux)
+            loss1 = lossfunction1(aux,target)
           
-          loss2 = lossfunction(scores,target)
-          loss = loss2 + loss1
+          loss2 = lossfunction2(scores,target)
+          loss = loss2 + config['discount'] * loss1
           cur_loss += loss.item() / (len_train)
           scores = F.softmax(scores,dim = 1)
           _,predicted = torch.max(scores,dim = 1)
@@ -190,7 +203,7 @@ def train(model,lossfunction,optimizer,n_epochs=200,return_logs=False):
           correct = 0;samples=0
           with torch.no_grad():
               scores,aux = model(data)
-              loss = lossfunction(scores,target)
+              loss = lossfunction2(scores,target)
               scores =F.softmax(scores,dim=1)
               _,predicted = torch.max(scores,dim = 1)
               correct += (predicted == target).sum()
@@ -301,11 +314,12 @@ CNN_arch = inception_v3(aux=config['aux'])
 
 CNN_arch = CNN_arch.to(device)
 
-lossfunction = nn.CrossEntropyLoss()
+lossfunction1 = nn.CrossEntropyLoss()
+lossfunction2 = nn.CrossEntropyLoss()
 optimizer = optim.Adam(params=CNN_arch.parameters(),lr=config['lr'])
 
 getparams(CNN_arch)
-history = train(CNN_arch,lossfunction,optimizer,n_epochs=config['EPOCHS'],return_logs=config['return_logs'])
+history = train(CNN_arch,lossfunction1,lossfunction2,optimizer,n_epochs=config['EPOCHS'],return_logs=config['return_logs'])
 loss_acc_curve(history)
 
 test_fta,y_true,y_pred,prob = evaluate(CNN_arch,test_loader,return_logs=config['return_logs'])
