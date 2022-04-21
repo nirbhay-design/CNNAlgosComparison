@@ -52,7 +52,7 @@ torch.manual_seed(config['SEED'])
 torch.cuda.manual_seed(config['SEED'])
 torch.backends.cudnn.benchmarks = True
 torch.backends.cudnn.deterministic = True
-#torch.backends.cuda.matmul.allow_tf32 = True
+torch.backends.cuda.matmul.allow_tf32 = True
 torch.backends.cudnn.allow_tf32 = True
 
 #-------------------------------------------dataset and dataloader-----------------------------------
