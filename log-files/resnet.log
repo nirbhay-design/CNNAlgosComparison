@@ -1,0 +1,6 @@
+gpu_id:  3
+cuda
+1920
+640
+640
+total_trainable_parameters are : 13.45M
