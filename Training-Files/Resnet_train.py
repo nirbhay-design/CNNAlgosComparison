@@ -18,12 +18,12 @@ from sklearn.metrics import classification_report,auc,roc_curve,precision_recall
 
 #----------------------------------------paths and hyper parameters-----------------------------
 config = dict(
-    train_path = '../../../dataset/RetinaEyeDataset/Training_Set/Training_Set/Training',
-    val_path = '../../../dataset/RetinaEyeDataset/Evaluation_Set/Evaluation_Set/Validation',
-    test_path = '../../../dataset/RetinaEyeDataset/Test_Set/Test_Set/Test',
-    train_csv = '../../../dataset/RetinaEyeDataset/Training_Set/Training_Set/RFMiD_Training_Labels.csv',
-    val_csv = '../../../dataset/RetinaEyeDataset/Evaluation_Set/Evaluation_Set/RFMiD_Validation_Labels.csv',
-    test_csv= '../../../dataset/RetinaEyeDataset/Test_Set/Test_Set/RFMiD_Testing_Labels.csv',
+    train_path = '../../../dataset/RetinalDiseaseData/Retinaldata/Training_Set/Training_Set/Training',
+    val_path = '../../../dataset/RetinalDiseaseData/Retinaldata/Evaluation_Set/Evaluation_Set/Validation',
+    test_path = '../../../dataset/RetinalDiseaseData/Retinaldata/Test_Set/Test_Set/Test',
+    train_csv = '../../../dataset/RetinalDiseaseData/Retinaldata/Training_Set/Training_Set/RFMiD_Training_Labels.csv',
+    val_csv = '../../../dataset/RetinalDiseaseData/Retinaldata/Evaluation_Set/Evaluation_Set/RFMiD_Validation_Labels.csv',
+    test_csv= '../../../dataset/RetinalDiseaseData/Retinaldata/Test_Set/Test_Set/RFMiD_Testing_Labels.csv',
     BATCH_SIZE=8,
     IMAGE_HEIGHT= 512,
     IMAGE_WIDTH = 770,
