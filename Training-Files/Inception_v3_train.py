@@ -53,6 +53,7 @@ config['fta_path'] = config['fta_path'][:-4] + str_value + config['fta_path'][-4
 print(config['saved_path'])
 print(config['loss_acc_path'])
 print(config['roc_path'])
+
 print(config['fta_path'])
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
