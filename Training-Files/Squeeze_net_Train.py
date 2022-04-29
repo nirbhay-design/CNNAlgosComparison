@@ -34,10 +34,10 @@ config = dict(
     gpu_id="6",
     SEED=42,
     return_logs=False,
-    saved_path = '../saved-models/resnet2_v1.pth',
-    loss_acc_path = '../roc_loss_plots/loss-acc-resnet2.svg',
-    roc_path = '../roc_loss_plots/roc-resnet2.svg',
-    fta_path = '../pickle-files-roc/fta_resnet2.pkl'
+    saved_path = '../saved-models/squeezenet_v1.pth',
+    loss_acc_path = '../roc_loss_plots/loss-acc-squeezenet.svg',
+    roc_path = '../roc_loss_plots/roc-squeezenet.svg',
+    fta_path = '../pickle-files-roc/fta_squeezenet.pkl'
 )
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
@@ -138,8 +138,9 @@ print(int(len(train_loader)*config['BATCH_SIZE']))
 print(int(len(test_loader)*config['BATCH_SIZE']))
 print(int(len(val_loader)*config['BATCH_SIZE']))
     
-#----------------------------------------------------resnet net-----------------------------------------------------
-from resnet_from_scratch import Resnet50
+#----------------------------------------------------squeeze net-----------------------------------------------------
+from squeez import SqueezeNet
+
 
 
 
@@ -163,10 +164,13 @@ def train(model,lossfunction,optimizer,n_epochs=200,return_logs=False):
           data = transformations(data)    
           data = data.to(device)
           target = target.to(device)
-          print(target.shape)
+        #   target=target.squeeze(1)
 
           scores = model(data)
-          print(scores.shape)    
+          #scores=np.squeeze(scores)
+          #print(target.shape)
+          #print(scores.shape)
+         
           loss = lossfunction(scores,target)
           cur_loss += loss.item() / (len_train)
           scores = F.softmax(scores,dim = 1)
@@ -195,6 +199,7 @@ def train(model,lossfunction,optimizer,n_epochs=200,return_logs=False):
           correct = 0;samples=0
           with torch.no_grad():
               scores = model(data)
+              #scores=np.squeeze(scores)
               loss = lossfunction(scores,target)
               scores =F.softmax(scores,dim=1)
               _,predicted = torch.max(scores,dim = 1)
@@ -246,6 +251,7 @@ def evaluate(model,loader,return_logs=False):
           # model = model.to(device)
 
           scores = model(x)
+          #scores=np.squeeze(x)
           predict_prob = F.softmax(scores,dim=1)
           _,predictions = predict_prob.max(1)
 
@@ -295,14 +301,14 @@ def roc_plot(fta):
     plt.plot(fpr,tpr,label=f'auc: {aucc:.3f}')
     plt.xlabel('fpr')
     plt.ylabel('tpr')
-    plt.title('roc_googlenet')
+    plt.title('roc_squeezenet')
     plt.legend()
     plt.savefig(config['roc_path'],format='svg')
     
 
 #---------------------------------------------train and test---------------------------------------------------------
 
-CNN_arch = Resnet50()
+CNN_arch = SqueezeNet()
 
 CNN_arch = CNN_arch.to(device)
 
