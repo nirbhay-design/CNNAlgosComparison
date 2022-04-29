@@ -31,13 +31,13 @@ config = dict(
     EPOCHS=30,
     pin_memory=True,
     num_workers=4,
-    gpu_id="6",
+    gpu_id="2",
     SEED=42,
     return_logs=False,
-    saved_path = '../saved-models/squeezenet_v1.pth',
-    loss_acc_path = '../roc_loss_plots/loss-acc-squeezenet.svg',
-    roc_path = '../roc_loss_plots/roc-squeezenet.svg',
-    fta_path = '../pickle-files-roc/fta_squeezenet.pkl'
+    saved_path = '../saved-models/squeezenet2_v12.pth',
+    loss_acc_path = '../roc_loss_plots/loss-acc-squeezenet2.svg',
+    roc_path = '../roc_loss_plots/roc-squeezenet2.svg',
+    fta_path = '../pickle-files-roc/fta_squeezenet2.pkl'
 )
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
@@ -139,7 +139,7 @@ print(int(len(test_loader)*config['BATCH_SIZE']))
 print(int(len(val_loader)*config['BATCH_SIZE']))
     
 #----------------------------------------------------squeeze net-----------------------------------------------------
-from squeez import SqueezeNet
+from squeeze_net import SqueezeNet_DWC
 
 
 
@@ -308,7 +308,7 @@ def roc_plot(fta):
 
 #---------------------------------------------train and test---------------------------------------------------------
 
-CNN_arch = SqueezeNet()
+CNN_arch = SqueezeNet_DWC(ic=3,out_classes=10)
 
 CNN_arch = CNN_arch.to(device)
 
