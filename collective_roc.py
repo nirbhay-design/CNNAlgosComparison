@@ -3,9 +3,10 @@ import os
 import pickle as pkl
 
 DIR = 'pickle-files-roc'
-# pkl_files = os.listdir(DIR)
-
-pkl_files = ['fta_resnet.pkl', 'fta_google.pkl', 'fta_inception.pkl', 'fta_inception_aux.pkl', 'fta_squeezenet.pkl', 'fta_shuffle.pkl']
+pkl_files = os.listdir(DIR)
+print(pkl_files)
+# exit(0)
+# pkl_files = ['fta_resnet.pkl', 'fta_google.pkl', 'fta_inception.pkl', 'fta_inception_aux.pkl', 'fta_squeezenet.pkl', 'fta_shuffle.pkl']
 
 plt.figure(figsize=(6,5))
 for idx, file_name in enumerate(pkl_files):
@@ -24,6 +25,14 @@ for idx, file_name in enumerate(pkl_files):
         plt.plot(fpr,tpr,label=f'SqueezeNet: {aucc:.2f}')
     elif 'inception' in file_name:
         plt.plot(fpr,tpr,label=f'Inception: {aucc:.2f}')
+    elif 'b0' in file_name:
+        plt.plot(fpr,tpr,label=f'Efficientb0: {aucc:.2f}')
+    elif 'b2' in file_name:
+        plt.plot(fpr,tpr,label=f'Efficientb2: {aucc:.2f}')    
+    elif 'mob' in file_name:
+        plt.plot(fpr,tpr,label=f'MobileNetv2: {aucc:.2f}')
+
+
 
 plt.xlabel('fpr')
 plt.ylabel('tpr')
