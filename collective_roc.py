@@ -13,6 +13,7 @@ for idx, file_name in enumerate(pkl_files):
     with open(os.path.join(DIR,pkl_files[idx]),'rb') as f:
         data = pkl.load(f)
         fpr,tpr,aucc = data[1]
+    plt.plot([0,1],[0,1],linestyle='dashed')
     if 'google' in file_name:
         plt.plot(fpr,tpr,label=f'GoogleNet: {aucc:.2f}')
     elif 'aux' in file_name and 'inception' in file_name:
