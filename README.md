@@ -21,8 +21,6 @@
 
 Results:
 
-- **googlenet**
+- **roc-plot**
 
-![img1](roc_loss_plots/roc-googlenet.svg)
-
-![img2](roc_loss_plots/loss-acc-googlenet.svg)
+![img1](roc__models.svg)
