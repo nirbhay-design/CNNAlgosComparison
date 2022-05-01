@@ -8,6 +8,7 @@
 4. Mobilenet
 5. Shufflenet
 6. Squeezenet
+7. Inceptionnet
 
 ## Dataset
 
